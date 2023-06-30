@@ -24,4 +24,4 @@ app.get('*', (req, res) => {
 // set up listener to confirm port / application is active
 app.listen(PORT, () => {
     console.log(`Application is running @ http://localhost:${PORT}`);
-})
+});
