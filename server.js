@@ -11,21 +11,23 @@ const PORT = process.env.PORT ?? 3001;
 // set up instance of express as app
 const app = express();
 
-// direct app to use public directory for static files 
-
+// install middleware to parse json/application and urlencoded body
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
+// direct app to use public directory for static files 
 app.use(express.static('public'));
+
 // GET /notes returns notes.html
 app.get('/notes', (req, res) => {
     return res.sendFile(path.join(__dirname, 'public/notes.html'));
 });
-
+// get /api/notes returns all notes in db.json
 app.get('/api/notes', (req, res) => {
     return res.json(db);
 });
 
+// POST to /api/notes adds a note to the db.json file 
 app.post('/api/notes', (req, res) => {
     console.log(`${req.method} request received to add note.`);
     
@@ -39,11 +41,12 @@ app.post('/api/notes', (req, res) => {
             if (err) {
                 console.error(err);
             } else {
-                return res.status(201);
+                console.log(`New note '${req.body.title}: ${req.body.text}' added successfully!`);
             }
         })
-    
+    return res.json(newNote);
     }
+     
 );
 
 //  GET * returns index.html; placed at bottom so wildcard does not replace other paths
