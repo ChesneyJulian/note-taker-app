@@ -67,6 +67,23 @@ app.post('/api/notes', (req, res) => {
      
 );
 
+app.delete('/api/notes/:id', (req, res) => {
+    console.log(`${req.method} request received.`);
+    const { id } = req.params;
+    for (let i = 0; i < db.length; i++) {
+        if(id == db[i].id) {
+            const found = res.json(db[i]);
+            const entries = fs.readFileSync('db/db.json');
+            const parsedEntries = JSON.parse(entries);
+            const updatedEntries = delete parsedEntries[i];
+            const stringEntries = JSON.stringify(updatedEntries, null, 4);
+            fs.writeFileSync('db/db.json', stringEntries);
+        }
+        return res.json(db);
+    }
+    
+})
+
 //  GET * returns index.html; placed at bottom so wildcard does not replace other paths
 app.get('*', (req, res) => {
     return res.sendFile(path.join(__dirname, 'public/index.html'));
