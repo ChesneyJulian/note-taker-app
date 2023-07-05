@@ -25,6 +25,7 @@ app.get('/notes', (req, res) => {
     return res.sendFile(path.join(__dirname, 'public/notes.html'));
 });
 // get /api/notes returns all notes in db.json
+// FIX THIS
 app.get('/api/notes', (req, res) => {
     return res.json(db);
 });
@@ -69,18 +70,22 @@ app.post('/api/notes', (req, res) => {
 
 app.delete('/api/notes/:id', (req, res) => {
     console.log(`${req.method} request received.`);
-    const { id } = req.params;
-    for (let i = 0; i < db.length; i++) {
-        if(id == db[i].id) {
-            const found = res.json(db[i]);
-            const entries = fs.readFileSync('db/db.json');
-            const parsedEntries = JSON.parse(entries);
-            const updatedEntries = delete parsedEntries[i];
-            const stringEntries = JSON.stringify(updatedEntries, null, 4);
-            fs.writeFileSync('db/db.json', stringEntries);
+    const { id } = req.params; 
+    const originalEntries = fs.readFileSync('db/db.json', 'utf8');
+    const parsedEntries = JSON.parse(originalEntries);
+    console.log(originalEntries);
+    console.log(parsedEntries);
+    for (let i = 0; i < parsedEntries.length; i++) {
+        if (id === parsedEntries[i].id) {
+            delete parsedEntries[i];
+            const stringEntries = JSON.stringify(parsedEntries, null, 4);
+            stringEntries.replace('null', '');
+            console.log(stringEntries);
+            const updatedEntries = fs.writeFileSync('db/db.json', stringEntries);
+            return res.json(updatedEntries);
         }
-        return res.json(db);
     }
+    
     
 })
 
