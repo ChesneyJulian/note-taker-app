@@ -1,6 +1,18 @@
 [
     {
-        "title":"Test Title",
-        "text":"Test text"
+        "title": "Test Title",
+        "text": "Test text"
+    },
+    {
+        "title": "hello",
+        "text": "there"
+    },
+    {
+        "title": "New Note",
+        "text": "New text"
+    },
+    {
+        "title": "cool",
+        "text": "New text"
     }
 ]
