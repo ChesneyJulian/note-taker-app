@@ -6,6 +6,8 @@ const path = require('path');
 const fs = require('fs');
 // import db.json file
 const db = require('./db/db.json');
+
+const { v4: uuidv4 } = require('uuid');
 // set up port configuration so it will work with heroku
 const PORT = process.env.PORT ?? 3001;
 // set up instance of express as app
@@ -30,8 +32,12 @@ app.get('/api/notes', (req, res) => {
 // POST to /api/notes adds a note to the db.json file 
 app.post('/api/notes', (req, res) => {
     console.log(`${req.method} request received to add note.`);
-    
     const newNote = req.body;
+    const newEntry = {
+        newNote,
+        id: uuidv4()
+    }
+    console.log(newEntry);
         const original = fs.readFileSync('db/db.json', 'utf8');
         const parsedNotes = JSON.parse(original);
         parsedNotes.push(newNote);
