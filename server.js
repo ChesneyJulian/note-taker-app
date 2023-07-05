@@ -32,15 +32,17 @@ app.get('/api/notes', (req, res) => {
 // POST to /api/notes adds a note to the db.json file 
 app.post('/api/notes', (req, res) => {
     console.log(`${req.method} request received to add note.`);
-    const newNote = req.body;
+    const title = req.body.title.trim();
+    const text = req.body.text.trim();
     const newEntry = {
-        newNote,
+        title,
+        text,
         id: uuidv4()
     }
     console.log(newEntry);
         const original = fs.readFileSync('db/db.json', 'utf8');
         const parsedNotes = JSON.parse(original);
-        parsedNotes.push(newNote);
+        parsedNotes.push(newEntry);
         const stringNotes = JSON.stringify(parsedNotes, null, 4);
 
         fs.writeFile('db/db.json', stringNotes, (err) => {
@@ -50,7 +52,7 @@ app.post('/api/notes', (req, res) => {
                 console.log(`New note '${req.body.title}: ${req.body.text}' added successfully!`);
             }
         })
-    return res.json(newNote);
+    return res.json(newEntry);
     }
      
 );

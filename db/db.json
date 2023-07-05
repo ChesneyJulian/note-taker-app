@@ -4,59 +4,8 @@
         "text": "Test text"
     },
     {
-        "title": "hello",
-        "text": "there"
-    },
-    {
-        "title": "New Note",
-        "text": "New text"
-    },
-    {
-        "title": "cool",
-        "text": "New text"
-    },
-    {
-        "title": "study",
-        "text": "express.js middleware"
-    },
-    {
-        "title": "study",
-        "text": "express.js middleware"
-    },
-    {
-        "title": "study",
-        "text": "express.js middleware"
-    },
-    {
-        "title": "grocery list",
-        "text": "toiletries, sunscreen, bananas"
-    },
-    {
-        "title": "grocery list",
-        "text": "toiletries, sunscreen, bananas"
-    },
-    {
-        "title": "grocery list",
-        "text": "toiletries, sunscreen, bananas"
-    },
-    {
-        "title": "Talulah",
-        "text": "vet appointment 3pm"
-    },
-    {
-        "title": "hi",
-        "text": "h"
-    },
-    {
-        "title": "grocery list",
-        "text": "toiletries, sunscreen, bananas"
-    },
-    {
-        "title": "grocery list",
-        "text": "toiletries, sunscreen, bananas"
-    },
-    {
-        "title": "grocery list",
-        "text": "toiletries, sunscreen, bananas"
+        "title": "notes",
+        "text": "notes notes notes\n",
+        "id": "28357f85-0018-4d96-9db6-33a2d414e1b1"
     }
 ]
