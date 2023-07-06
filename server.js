@@ -68,25 +68,27 @@ app.post('/api/notes', (req, res) => {
      
 );
 
+// DELETE note by id in api/notes path
 app.delete('/api/notes/:id', (req, res) => {
     console.log(`${req.method} request received.`);
+    // assign id to the value of the reqest parameters :id
     const { id } = req.params; 
+    // read original db file and assign to originalEntries
     const originalEntries = fs.readFileSync('db/db.json', 'utf8');
+    // parse originalEntries to JSON
     const parsedEntries = JSON.parse(originalEntries);
-    console.log(originalEntries);
-    console.log(parsedEntries);
-    for (let i = 0; i < parsedEntries.length; i++) {
-        if (id === parsedEntries[i].id) {
-            delete parsedEntries[i];
-            const stringEntries = JSON.stringify(parsedEntries, null, 4);
-            stringEntries.replace('null', '');
-            console.log(stringEntries);
-            const updatedEntries = fs.writeFileSync('db/db.json', stringEntries);
-            return res.json(updatedEntries);
-        }
-    }
-    
-    
+    // create function to return true for entries that dont have id's matching the req params
+    function notDeleting (entry) {
+        return (entry.id !== id);
+    };
+    // update entries by filtering using notDeleting function
+    const updated = parsedEntries.filter(notDeleting);
+    // convert updated entries to formatted string
+    const stringEntries = JSON.stringify(updated, null, 4);
+    // rewrite stringified updated entries to db.json
+    fs.writeFileSync('db/db.json', stringEntries);
+    // respond with json format of updated entries
+    return res.json(updated);
 })
 
 //  GET * returns index.html; placed at bottom so wildcard does not replace other paths

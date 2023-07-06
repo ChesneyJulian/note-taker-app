@@ -1,9 +1,9 @@
 [
     {
         "title": "Test Title",
-        "text": "Test text"
+        "text": "Test text",
+        "id": "testid"
     },
-    null,
     {
         "title": "Grocery List",
         "text": "apples, bananas, sunscreen, pool float, shampoo",
