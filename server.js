@@ -25,9 +25,12 @@ app.get('/notes', (req, res) => {
     return res.sendFile(path.join(__dirname, 'public/notes.html'));
 });
 // get /api/notes returns all notes in db.json
-// FIX THIS
 app.get('/api/notes', (req, res) => {
-    return res.json(db);
+    // read original so it grabs a fresh version with each get request
+    const original = fs.readFileSync('db/db.json', 'utf8');
+    // parse original db file into json
+    const parsedNotes = JSON.parse(original);
+    return res.json(parsedNotes);
 });
 
 // POST to /api/notes adds a note to the db.json file 

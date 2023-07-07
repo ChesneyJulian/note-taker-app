@@ -8,5 +8,15 @@
         "title": "Grocery List",
         "text": "apples, bananas, sunscreen, pool float, shampoo",
         "id": "c6df7373-81f9-404d-86ea-79f2ae885dba"
+    },
+    {
+        "title": "New Note",
+        "text": "Hello",
+        "id": "2908290a-d252-4d00-b93e-45c52e311d39"
+    },
+    {
+        "title": "second note",
+        "text": "bye",
+        "id": "d20a6a5f-f5a0-4040-a3da-7a8ef7eac07f"
     }
 ]
