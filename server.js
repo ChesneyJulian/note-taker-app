@@ -26,7 +26,7 @@ app.get('/notes', (req, res) => {
 });
 // get /api/notes returns all notes in db.json
 app.get('/api/notes', (req, res) => {
-    // read original so it grabs a fresh version with each get request
+    // read original so it grabs a fresh version with each get
     const original = fs.readFileSync('db/db.json', 'utf8');
     // parse original db file into json
     const parsedNotes = JSON.parse(original);
