@@ -4,7 +4,7 @@ The goal of this project was to create a functional server for pre-existing fron
 ## Deployed Application
 Follow this link to view the web app!
 
-[Note Taker App]()
+[Note Taker App](https://stormy-fortress-54603-8d3de02ba2d7.herokuapp.com/)
 ![Screenshot of Deployed Application](./public/assets/images/note-taker-screenshot.png)
 
 ## Usage
