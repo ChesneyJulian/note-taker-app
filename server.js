@@ -76,12 +76,8 @@ app.delete('/api/notes/:id', (req, res) => {
     const originalEntries = fs.readFileSync('db/db.json', 'utf8');
     // parse originalEntries to JSON
     const parsedEntries = JSON.parse(originalEntries);
-    // create function to return true for entries that dont have id's matching the req params
-    function notDeleting (entry) {
-        return (entry.id !== id);
-    };
     // update entries by filtering using notDeleting function
-    const updated = parsedEntries.filter(notDeleting);
+    const updated = parsedEntries.filter((entry) => entry.id !== id);
     // convert updated entries to formatted string
     const stringEntries = JSON.stringify(updated, null, 4);
     // rewrite stringified updated entries to db.json

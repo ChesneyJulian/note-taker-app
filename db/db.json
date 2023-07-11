@@ -13,5 +13,10 @@
         "title": "mySQL",
         "text": "start up: mysql -uroot\nDESCRIBE tablename; --> describes info in table without displaying info in table\nSELECT * FROM tablename; --> shows all columns and rows in table",
         "id": "932d750d-ebc7-4daf-95ed-14783eecb30a"
+    },
+    {
+        "title": "Heroku",
+        "text": "const port = process.env.PORT || 3001\n\nheroku create\n\ngit add -A\ngit commit -m \"Pushing to Heroku\"\ngit push heroku main\n\nheroku open\n\nhttps://coding-boot-camp.github.io/full-stack/heroku/heroku-deployment-guide",
+        "id": "720a0952-b3f7-4489-9161-47f93cf25ac4"
     }
 ]
